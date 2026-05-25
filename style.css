@@ -1,0 +1,256 @@
+
+/* @define-color background #1e1e2e;
+@define-color primary #cba6f7; */
+
+bar {
+  background-color:@background;
+  color: @primary;
+  height: 25px;
+}
+
+
+.welcome{
+  font-size: 20px;
+  font-weight: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.battery{
+  /* background-color: @background; */
+  background: transparent;
+}
+
+.icon-tray{
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.ws-button{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  padding: 4px 8px;
+  width: 62px;
+  color: @primary;
+  background-color: alpha(@primary, 0.08);
+  /* background-color: @secondary; */
+}
+.clock{
+   margin-right: 10px;
+   color: @primary;
+  margin-top: 5px;
+  /* background-color: @secondary; */
+  background-color: alpha(@primary, 0.08);
+  margin-bottom: 5px;
+}
+
+/* .battery-pill{
+  min-width: 54px;
+  min-height: 20;
+  padding: 2px 8px;
+} */
+.battery-label{
+  font-size: 11px;
+  font-weight: bold;
+  color: black;
+}
+.calendar{
+  background-color: @background;
+  color: @primary;
+}
+.Welcome-window{
+  border-radius: 40px;
+}
+
+.launcher{
+  background-color: @background;
+  color: @primary;
+  border-radius:8px;
+  padding-top:8px;
+}
+
+.launcher-search{
+  margin: 0 25px;
+}
+.slide{
+  width: 60px;
+}
+
+.toast-list{
+  background-color: @background;
+  color:@primary;
+  padding:8px;
+  border-radius:8px;
+}
+.notification-popup{
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+.toast {
+    animation: slide-in 200ms ease-out;
+    margin-bottom: 8px;
+    background-color: alpha(@primary, 0.08);
+    padding:5px;
+}
+
+
+
+.qs-Section{
+  background-color: alpha(@primary, 0.5);
+  padding:10px;
+  font-size:13px;
+  margin-left:2px;
+  margin-right:5px;
+  border-radius:8px;
+}
+
+
+
+
+.battery-pill {
+    border-radius: 999px;
+    padding: 0;
+    border: none;
+    min-width: 30px;
+    min-height: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+/* the box inside is what gets the gradient */
+.battery-pill > box {
+    border-radius: 999px;
+    padding: 2px 12px;
+    min-width: 30px;
+    min-height: 10px;
+}
+
+.battery-number {
+    font-size: 18px;
+    color: @on_primary;
+    text-shadow: 1px 1px 3px alpha(@primary, 1);
+  }
+  
+  .battery-icon {
+    font-size: 18px;
+    color: @on_primary;
+    text-shadow: 1px 1px 3px alpha(@primary, 1);
+}
+
+
+.wallpaper-btn{
+  transition: all 200ms ease;
+  transform: scale(1);
+  padding: 0;
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.wallpaper-btn.selected{
+  transform: scale(1.1);
+  border: 2px solid @primary;
+}
+
+/* QUICK SETTING SECTION */
+.qs-window{
+  border-radius:8px;
+  background-color: @background;
+}
+.qs-inner{
+  padding: 16px;
+}
+.qs-header{
+  font-size: 16px;
+  font-weight: bold;
+  color: @primary;
+}
+/* quick setting tile */
+.qs-title{
+  min-width: 85px;
+  min-height: 70px;
+  border-radius: 12px;
+  padding: 8px;
+}
+.qs-title.is-on label{
+  color: @background;
+}
+
+.qs-title.is-on{
+  background-color: @primary;
+}
+
+.qs-title.is-off label{
+  color: @primary;
+}
+.qs-title.is-off{
+  background-color: alpha(@primary, 0.15);
+}
+
+.qs-title-icon{
+  font-size: 20px;
+}
+.qs-title-label{
+  font-size: 11px;
+}
+
+/* notifications */
+.qs-notif-row{
+  background-color: alpha(@primary, 0.08);
+  border-radius:8px;
+  padding:8px;
+}
+
+.qs-notif-summary{
+  font-size: 13px;
+  font-weight: bold;
+}
+.qs-notif-body{
+  font-size: 11px;
+  color: alpha(@primary, 0.7);
+}
+.qs-notif-time{
+  font-size: 10px;
+  color: alpha(@primary, 0.5);
+}
+.qs-notif-dismiss{
+  background:none;
+  border: none;
+  color: alpha(@primary, 0.5);
+}
+.qs-clear-btn{
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: alpha(@primary, 0.7);
+}
+.qs-notif-empty{
+  font-size:12px;
+  padding:12px;
+  color: alpha(@primary, 0.4);
+}
+
+dashboard{
+  background: @background;
+}
+
+.bento-card{
+  /* background-color: #313244; */
+  background-color: alpha(@primary, 0.4);
+  border-radius: 12px;
+  padding:12px;
+  min-height: 80px;
+}
+
+.weatherlabel{
+  font-size: 900;
+}
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        margin-top: -20px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
