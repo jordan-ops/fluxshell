@@ -85,6 +85,8 @@ export default function wallpapers() {
                                     GLib.spawn_command_line_async(`swww img ${path} --transition-type wipe`)
                                     GLib.spawn_command_line_async(`matugen image ${path} --prefer=lightness`)
 
+                                    
+                                    
                                     setTimeout(() => {
                                         app.reset_css()
                                         const colors = new TextDecoder().decode(
@@ -92,6 +94,9 @@ export default function wallpapers() {
                                         )
                                         app.apply_css(colors + style)
                                     }, 2000)
+                                    GLib.spawn_command_line_async(`~/.config/typora/generate-typora-theme.sh`)
+
+                                    GLib.spawn_command_line_async(`if [[ ${path} != *.gif ]]; then ln -sf ${path} "$HOME/.cache/current_wallpaper" fi`);
                                 }}
                                 >
                                     {image}

@@ -3,6 +3,8 @@ import Gtk from "gi://Gtk";
 import Gdk from "gi://Gdk";
 import GLib from "gi://GLib";
 import { createState, createBinding, With } from "ags";
+import TodoList from "../todoList";
+
 
 const {TOP, LEFT } = Astal.WindowAnchor;
 
@@ -33,7 +35,7 @@ export default function ClockPopup() {
             marginLeft={18}
             layer={Astal.Layer.TOP}
             exclusivity={Astal.Exclusivity.NORMAL}
-            // keymode={Astal.Keymode.ON_DEMAND}
+            keymode={Astal.Keymode.ON_DEMAND}
             visible={getOpen}
         >
             <box
@@ -43,6 +45,7 @@ export default function ClockPopup() {
                 widthRequest={280}
             >
                 <Calendar />
+                <TodoList />
             </box>
         </window>
     );

@@ -2,6 +2,7 @@ import { Astal } from "ags/gtk4";
 import Wp from "gi://AstalWp"
 import {createBinding, createComputed, createState} from "ags"
 import Gtk from "gi://Gtk";
+import GLib from "gi://GLib";
 import { version } from "system";
 
 const speaker = Wp.get_default()!.audio.default_speaker!;
@@ -27,11 +28,15 @@ export function AudioSection() {
 
     let settingFromBinding = false;
     
-    volume.subscribe((v) => {
-        settingFromBinding = true;
-        slider.set_value(v);
-        settingFromBinding = false;
-    });
+   GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
+    settingFromBinding = true
+    slider.set_value(speaker.volume)
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+        settingFromBinding = false
+        return false
+    })
+    return true
+})
 
     slider.connect("value-changed", () => {
         if (settingFromBinding) return;

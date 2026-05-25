@@ -5,6 +5,13 @@ import Network from "gi://AstalNetwork";
 import Bluetooth from "gi://AstalBluetooth?version=0.1";
 import { AudioSection } from "../audio";
 import { getNotifications, clearAllNotifications, removeNotification, type Notification } from "../notifstore";
+import { BrightnessSection } from "../brightnesSection";
+
+
+
+
+
+
 const { TOP, RIGHT, BOTTOM} = Astal.WindowAnchor;
 
 let [getOpen, setOpen] = createState(false);
@@ -153,6 +160,7 @@ export default function Quicksettings() {
                 <NotificationCenter />
                 {/* sliders */}
                 <AudioSection />
+                <BrightnessSection />
             </box>
         </window>
     )

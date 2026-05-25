@@ -11,9 +11,15 @@ const [getOpen, setOpen] = createState(false)
 export const toggleMusicPopup = () => setOpen(prev => !prev)
 
 export default function MusicPopup() {
+
     const albumArt = new Gtk.Image()
     albumArt.set_pixel_size(200)
     albumArt.set_from_icon_name("audio-x-generic")
+
+    const artWrapper = new Gtk.Box()
+    artWrapper.add_css_class("artWrapper")
+    artWrapper.append(albumArt)
+
 
     const titleLabel = new Gtk.Label({ label: "Nothing playing" })
     const artistLabel = new Gtk.Label({ label: "" })
@@ -21,6 +27,21 @@ export default function MusicPopup() {
     const prevBtn = new Gtk.Button({ label: "󰒮" })
     const playBtn = new Gtk.Button({ label: "󰐊" })
     const nextBtn = new Gtk.Button({ label: "󰒭" })
+
+    const progressSlider = new Gtk.Scale({
+        orientation:Gtk.Orientation.HORIZONTAL,
+        drawValue:false,
+        hexpand:true,
+    })
+    progressSlider.set_range(0, 1)
+    progressSlider.set_increments(1, 10)
+
+    const timeLabel = new Gtk.Label({label: "0:00 / 0:00"})
+    function formatTime(seconds: number): string{
+        const m = Math.floor(seconds / 60)
+        const s = Math.floor(seconds % 60)
+        return `${m}:${s.toString().padStart(2, "0")}`
+    }
 
     function update() {
         const player = mpris.players[0]
@@ -36,6 +57,20 @@ export default function MusicPopup() {
             albumArt.set_from_icon_name("audio-x-generic")
             playBtn.set_label("󰐊")
         }
+        const position = player?.position ?? 0
+        const length = player?.length ?? 0
+        if(length >0){
+            progressSlider.set_range(0, length)
+            progressSlider.set_value(position)
+            timeLabel.set_label(`${formatTime(position)} / ${formatTime(length)}`)
+        } else {
+            progressSlider.set_value(0)
+            timeLabel.set_label("0:00 / 0:00")
+        }
+        progressSlider.connect("value-changed", () => {
+            const player = mpris.players[0]
+            if (player) player.position = progressSlider.get_value()
+        })
         return true
     }
 
@@ -44,7 +79,7 @@ export default function MusicPopup() {
     nextBtn.connect("clicked", () => mpris.players[0]?.next())
 
     update()
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, update)
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 3000, update)
 
     const controls = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 25 })
     controls.append(prevBtn)
@@ -55,10 +90,12 @@ export default function MusicPopup() {
     info.append(titleLabel)
     info.append(artistLabel)
     info.append(controls)
+    info.append(progressSlider)
+    info.append(timeLabel)
 
     const content = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 90,width_request:600 })
     content.add_css_class("music-popup")
-    content.append(albumArt)
+    content.append(artWrapper)
     content.append(info)
 
     return (

@@ -34,20 +34,17 @@ export default function Bar(monitor:Gdk.Monitor) {
           <Clock />
           <MusicWidget />
         </box>
+        
         <box $type="center">
           <Workspace />
           </box>
+
         <box $type="end"
         spacing={8}>
           {/* <BluetoothWidget />
           <NetworkWidget /> */}
           {/* <Audio /> */}
            <SystemTray />
-
-           <button
-                onClicked={toggleWallpaper}>
-                    <label label={("wallpaper")}/>
-                </button>
           <Battery />
           </box>
       </centerbox>

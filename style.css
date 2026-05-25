@@ -230,20 +230,110 @@ bar {
 }
 
 dashboard{
-  background: @background;
+  border-radius: 8px;
+  padding: 10px;
+  background: @background; 
 }
 
+music-popup-window{
+  border-radius: 8px;
+  padding: 20px;
+  background: alpha(@background, 0.6);
+  /* backdrop-filter:blur(18px); */
+}
+.artWrapper{
+  overflow: hidden;
+  border-radius: 18px;
+}
 .bento-card{
-  /* background-color: #313244; */
-  background-color: alpha(@primary, 0.4);
-  border-radius: 12px;
+  background-color: alpha(@primary, 0.08);
+  border-radius: 8px;
   padding:12px;
-  min-height: 80px;
+  halign: center;
+  valign: center;
+  /* min-height: 80px; */
+}
+.bento-card label{
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .weatherlabel{
   font-size: 900;
 }
+
+
+
+
+
+.todo-section {
+    padding: 12px;
+    min-width: 200px;
+}
+
+.todo-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.todo-entry {
+    border-radius: 8px;
+    padding: 4px 8px;
+    background-color: @surface0;
+}
+
+.todo-add-btn {
+    border-radius: 8px;
+    padding: 4px 10px;
+}
+
+.todo-row {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.todo-row:hover {
+    background-color: @surface0;
+}
+
+.todo-text {
+    font-size: 13px;
+}
+
+.todo-done {
+    text-decoration: line-through;
+    opacity: 0.5;
+    background-color: alpha(@primary, 0.2);
+}
+
+.todo-check {
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.todo-delete {
+    border-radius: 50%;
+    padding: 2px;
+    opacity: 0.5;
+}
+
+.todo-delete:hover {
+    opacity: 1;
+    background-color: @tertiary;
+}
+
+.todo-empty {
+    opacity: 0.5;
+    margin-top: 20px;
+}
+
+.todo-section {
+    background-color: @background;
+    border-radius: 12px;
+    padding: 12px;
+    min-width: 200px;
+}
+
 @keyframes slide-in {
     from {
         opacity: 0;
