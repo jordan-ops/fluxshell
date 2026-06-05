@@ -8,10 +8,6 @@ import { getNotifications, clearAllNotifications, removeNotification, type Notif
 import { BrightnessSection } from "../brightnesSection";
 
 
-
-
-
-
 const { TOP, RIGHT, BOTTOM} = Astal.WindowAnchor;
 
 let [getOpen, setOpen] = createState(false);
